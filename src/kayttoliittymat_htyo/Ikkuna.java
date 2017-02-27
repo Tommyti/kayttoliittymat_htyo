@@ -1,4 +1,4 @@
-package käyttöliittymät_htyö1;
+package kayttoliittymat_htyo;
 
 import java.awt.EventQueue;
 
