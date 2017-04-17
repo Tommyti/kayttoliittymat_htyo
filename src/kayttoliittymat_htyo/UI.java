@@ -36,6 +36,8 @@ import java.awt.CardLayout;
 import javax.swing.JProgressBar;
 import javax.swing.JList;
 import javax.swing.JScrollBar;
+import javax.swing.SwingConstants;
+import javax.swing.Box;
 /**
  * Tehty WindowBuilderilla.
  * @author Tommi
@@ -81,8 +83,11 @@ public class UI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panelPaikat = new JPanel();
-		
+		JPanel syötepaneeli = new JPanel();
 		JPanel panelAloitus = new JPanel();
+		frame.getContentPane().setLayout(new CardLayout(0, 0));
+		frame.getContentPane().add(panelAloitus, "name_3744901173526");
+		panelAloitus.setLayout(new BorderLayout(0, 0));
 		
 		txtTunnus = new JTextField();
 		txtTunnus.setText("Tunnus");
@@ -93,36 +98,33 @@ public class UI {
 		
 		btnNewButton = new JButton("Kirjaudu");
 		btnNewButton.setAction(kirjaudu);
-		frame.getContentPane().setLayout(new CardLayout(0, 0));
-		frame.getContentPane().add(panelAloitus, "name_3744901173526");
 		
 		JButton btnLuoTili = new JButton("Luo Tili");
-		GroupLayout gl_panelAloitus = new GroupLayout(panelAloitus);
-		gl_panelAloitus.setHorizontalGroup(
-			gl_panelAloitus.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panelAloitus.createSequentialGroup()
-					.addGap(57)
-					.addGroup(gl_panelAloitus.createParallelGroup(Alignment.TRAILING)
-						.addComponent(btnLuoTili, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
-						.addComponent(btnNewButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
-						.addComponent(pwdSalasana, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
-						.addComponent(txtTunnus, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE))
-					.addGap(42))
+		GroupLayout gl_syötepaneeli = new GroupLayout(syötepaneeli);
+		gl_syötepaneeli.setHorizontalGroup(
+			gl_syötepaneeli.createParallelGroup(Alignment.CENTER)
+				.addGroup(gl_syötepaneeli.createSequentialGroup()
+					.addGap(10)
+					.addGroup(gl_syötepaneeli.createParallelGroup(Alignment.CENTER)
+						.addComponent(txtTunnus, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pwdSalasana, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnLuoTili, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)))
 		);
-		gl_panelAloitus.setVerticalGroup(
-			gl_panelAloitus.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelAloitus.createSequentialGroup()
-					.addGap(190)
-					.addComponent(txtTunnus, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
+		gl_syötepaneeli.setVerticalGroup(
+			gl_syötepaneeli.createParallelGroup(Alignment.CENTER)
+				.addGroup(gl_syötepaneeli.createSequentialGroup()
+					.addGap(11)
+					.addComponent(txtTunnus, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addGap(11)
 					.addComponent(pwdSalasana, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(btnLuoTili, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(215, Short.MAX_VALUE))
+					.addGap(6)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addGap(11)
+					.addComponent(btnLuoTili, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
 		);
-		panelAloitus.setLayout(gl_panelAloitus);
+		syötepaneeli.setLayout(gl_syötepaneeli);
+		panelAloitus.add(syötepaneeli);
 		
 		JPanel panelOhjelmisto = new JPanel();
 		frame.getContentPane().add(panelOhjelmisto, "name_569557156095");
