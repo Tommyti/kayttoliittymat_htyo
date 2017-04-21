@@ -143,10 +143,8 @@ public class UI {
 		
 		JPanel panelUser = new JPanel();
 		tabbedPane.addTab("K\u00E4ytt\u00E4j\u00E4", null, panelUser, "Sis\u00E4lt\u00E4\u00E4 kaikki k\u00E4ytt\u00E4j\u00E4lle tarkoitetut toiminnot");
-		panelUser.setLayout(new CardLayout(0, 0));
 		
-		JPanel panelOhjelmisto_2 = new JPanel();
-		panelUser.add(panelOhjelmisto_2, "name_19250298438323");
+		JPanel panelUser_ala = new JPanel();
 		
 		JPanel panelV = new JPanel();
 		panelV.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -156,25 +154,25 @@ public class UI {
 		
 		JPanel panelA = new JPanel();
 		panelA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		GroupLayout gl_panelOhjelmisto_2 = new GroupLayout(panelOhjelmisto_2);
-		gl_panelOhjelmisto_2.setHorizontalGroup(
-			gl_panelOhjelmisto_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelOhjelmisto_2.createSequentialGroup()
+		GroupLayout gl_panelUser_ala = new GroupLayout(panelUser_ala);
+		gl_panelUser_ala.setHorizontalGroup(
+			gl_panelUser_ala.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelUser_ala.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(panelV, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panelOhjelmisto_2.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panelUser_ala.createParallelGroup(Alignment.LEADING)
 						.addComponent(panelO, GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
 						.addComponent(panelA, GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE))
 					.addContainerGap())
 		);
-		gl_panelOhjelmisto_2.setVerticalGroup(
-			gl_panelOhjelmisto_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panelOhjelmisto_2.createSequentialGroup()
+		gl_panelUser_ala.setVerticalGroup(
+			gl_panelUser_ala.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panelUser_ala.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panelOhjelmisto_2.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_panelUser_ala.createParallelGroup(Alignment.TRAILING)
 						.addComponent(panelV, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
-						.addGroup(Alignment.LEADING, gl_panelOhjelmisto_2.createSequentialGroup()
+						.addGroup(Alignment.LEADING, gl_panelUser_ala.createSequentialGroup()
 							.addComponent(panelO, GroupLayout.PREFERRED_SIZE, 541, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(panelA, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -224,14 +222,24 @@ public class UI {
 			}
 		});
 		panelV.add(button, "cell 0 1,alignx center,aligny center");
-		panelOhjelmisto_2.setLayout(gl_panelOhjelmisto_2);
+		panelUser_ala.setLayout(gl_panelUser_ala);
+		GroupLayout gl_panelUser = new GroupLayout(panelUser);
+		gl_panelUser.setHorizontalGroup(
+			gl_panelUser.createParallelGroup(Alignment.LEADING)
+				.addComponent(panelUser_ala, GroupLayout.PREFERRED_SIZE, 749, GroupLayout.PREFERRED_SIZE)
+		);
+		gl_panelUser.setVerticalGroup(
+			gl_panelUser.createParallelGroup(Alignment.LEADING)
+				.addComponent(panelUser_ala, GroupLayout.PREFERRED_SIZE, 593, GroupLayout.PREFERRED_SIZE)
+		);
+		panelUser.setLayout(gl_panelUser);
 		
 		JPanel panelAdmin = new JPanel();
 		tabbedPane.addTab("Hallinta", null, panelAdmin, "Sis\u00E4lt\u00E4\u00E4 kaiken hallintaan liittyv\u00E4n");
 		
-		JPanel panelOhjelmistoAdmin = new JPanel();
+		JPanel panelAdmin_ala = new JPanel();
 		panelAdmin.setLayout(new CardLayout(0, 0));
-		panelAdmin.add(panelOhjelmistoAdmin, "name_19274229816455");
+		panelAdmin.add(panelAdmin_ala, "name_19274229816455");
 		
 		JPanel panel_V = new JPanel();
 		panel_V.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -248,25 +256,25 @@ public class UI {
 		JPanel panel_O = new JPanel();
 		panel_O.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_O.setLayout(new CardLayout(0, 0));
-		GroupLayout gl_panelOhjelmistoAdmin = new GroupLayout(panelOhjelmistoAdmin);
-		gl_panelOhjelmistoAdmin.setHorizontalGroup(
-			gl_panelOhjelmistoAdmin.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelOhjelmistoAdmin.createSequentialGroup()
+		GroupLayout gl_panelAdmin_ala = new GroupLayout(panelAdmin_ala);
+		gl_panelAdmin_ala.setHorizontalGroup(
+			gl_panelAdmin_ala.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelAdmin_ala.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(panel_V, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panelOhjelmistoAdmin.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_panelAdmin_ala.createParallelGroup(Alignment.TRAILING)
 						.addComponent(panel_O, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 624, GroupLayout.PREFERRED_SIZE)
 						.addComponent(panel_A, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 636, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		gl_panelOhjelmistoAdmin.setVerticalGroup(
-			gl_panelOhjelmistoAdmin.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelOhjelmistoAdmin.createSequentialGroup()
+		gl_panelAdmin_ala.setVerticalGroup(
+			gl_panelAdmin_ala.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelAdmin_ala.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panelOhjelmistoAdmin.createParallelGroup(Alignment.LEADING, false)
+					.addGroup(gl_panelAdmin_ala.createParallelGroup(Alignment.LEADING, false)
 						.addComponent(panel_V, GroupLayout.PREFERRED_SIZE, 575, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_panelOhjelmistoAdmin.createSequentialGroup()
+						.addGroup(gl_panelAdmin_ala.createSequentialGroup()
 							.addComponent(panel_O, GroupLayout.PREFERRED_SIZE, 541, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(panel_A, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -305,7 +313,7 @@ public class UI {
 		
 		JPanel pKayttajat = new JPanel();
 		panel_O.add(pKayttajat, "name_13233569861002");
-		panelOhjelmistoAdmin.setLayout(gl_panelOhjelmistoAdmin);
+		panelAdmin_ala.setLayout(gl_panelAdmin_ala);
 
 	}
 	private class SwingAction extends AbstractAction {
