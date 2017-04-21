@@ -40,6 +40,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JList;
 import javax.swing.JScrollBar;
 import javax.swing.JTabbedPane;
+import java.awt.Dimension;
 /**
  * Tehty WindowBuilderilla.
  * @author Tommi
@@ -153,8 +154,8 @@ public class UI {
 		JPanel panelO = new JPanel();
 		panelO.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		JPanel panelA = new JPanel();
+		panelA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		GroupLayout gl_panelOhjelmisto_2 = new GroupLayout(panelOhjelmisto_2);
 		gl_panelOhjelmisto_2.setHorizontalGroup(
 			gl_panelOhjelmisto_2.createParallelGroup(Alignment.LEADING)
@@ -164,7 +165,7 @@ public class UI {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panelOhjelmisto_2.createParallelGroup(Alignment.LEADING)
 						.addComponent(panelO, GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE))
+						.addComponent(panelA, GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_panelOhjelmisto_2.setVerticalGroup(
@@ -176,52 +177,53 @@ public class UI {
 						.addGroup(Alignment.LEADING, gl_panelOhjelmisto_2.createSequentialGroup()
 							.addComponent(panelO, GroupLayout.PREFERRED_SIZE, 541, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+							.addComponent(panelA, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
+		panelO.setLayout(new CardLayout(0, 0));
+		
+		JPanel pOhjelmisto = new JPanel();
+		panelO.add(pOhjelmisto, "name_12842638568807");
+		
+		JPanel pTeatteri = new JPanel();
+		panelO.add(pTeatteri, "name_12992666872268");
+		
+		JPanel pSali = new JPanel();
+		panelO.add(pSali, "name_13008255349157");
+		
+		JPanel pPaikat = new JPanel();
+		panelO.add(pPaikat, "name_12958178230757");
+		
+		JPanel pVaraukset = new JPanel();
+		panelO.add(pVaraukset, "name_12916663132887");
+		
+		JPanel pVarmennus = new JPanel();
+		panelO.add(pVarmennus, "name_13057546524508");
 		
 		JLabel label = new JLabel("minimaalista kuvausta toiminnasta");
-		panel.add(label);
+		panelA.add(label);
 		
 		JProgressBar progressBar = new JProgressBar();
-		panel.add(progressBar);
-		
-		JLabel label_1 = new JLabel("Elokuvan valinta");
-		panelO.add(label_1);
+		panelA.add(progressBar);
 		panelV.setLayout(new MigLayout("", "[83px]", "[23px][23px][23px][23px][23px][23px][23px][23px][23px][23px][23px]"));
 		
 		JButton btnOhjelmisto = new JButton("Ohjelmisto");
-		panelV.add(btnOhjelmisto, "cell 0 0,alignx left,aligny top");
+		btnOhjelmisto.setSize(new Dimension(83, 23));
+		btnOhjelmisto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		panelV.add(btnOhjelmisto, "cell 0 0,alignx center,aligny center");
 		
-		JButton button = new JButton("Ohjelmisto");
+		JButton button = new JButton("Varaukset");
+		button.setSize(new Dimension(83, 23));
+		button.setPreferredSize(new Dimension(83, 23));
+		button.setActionCommand("Varaukset");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		panelV.add(button, "cell 0 1,alignx center,aligny center");
-		
-		JButton button_1 = new JButton("Ohjelmisto");
-		panelV.add(button_1, "cell 0 2,alignx center,aligny center");
-		
-		JButton button_2 = new JButton("Ohjelmisto");
-		panelV.add(button_2, "cell 0 3,alignx center,aligny center");
-		
-		JButton button_3 = new JButton("Ohjelmisto");
-		panelV.add(button_3, "cell 0 4,alignx center,aligny center");
-		
-		JButton button_4 = new JButton("Ohjelmisto");
-		panelV.add(button_4, "cell 0 5,alignx center,aligny center");
-		
-		JButton button_5 = new JButton("Ohjelmisto");
-		panelV.add(button_5, "cell 0 6,alignx center,aligny center");
-		
-		JButton button_6 = new JButton("Ohjelmisto");
-		panelV.add(button_6, "cell 0 7,alignx center,aligny center");
-		
-		JButton button_7 = new JButton("Ohjelmisto");
-		panelV.add(button_7, "cell 0 8,alignx center,aligny center");
-		
-		JButton button_8 = new JButton("Ohjelmisto");
-		panelV.add(button_8, "cell 0 9,alignx center,aligny center");
-		
-		JButton button_9 = new JButton("Ohjelmisto");
-		panelV.add(button_9, "cell 0 10,alignx center,aligny center");
 		panelOhjelmisto_2.setLayout(gl_panelOhjelmisto_2);
 		
 		JPanel panelAdmin = new JPanel();
@@ -231,48 +233,78 @@ public class UI {
 		panelAdmin.setLayout(new CardLayout(0, 0));
 		panelAdmin.add(panelOhjelmistoAdmin, "name_19274229816455");
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.setLayout(new MigLayout("", "[]", "[]"));
+		JPanel panel_V = new JPanel();
+		panel_V.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		
-		JLabel lblElokuvanHallinta = new JLabel("Elokuvan hallinta");
-		panel_2.add(lblElokuvanHallinta);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		JPanel panel_A = new JPanel();
+		panel_A.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		
 		JLabel label_3 = new JLabel("minimaalista kuvausta toiminnasta");
-		panel_3.add(label_3);
+		panel_A.add(label_3);
 		
 		JProgressBar progressBar_1 = new JProgressBar();
-		panel_3.add(progressBar_1);
+		panel_A.add(progressBar_1);
+		
+		JPanel panel_O = new JPanel();
+		panel_O.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_O.setLayout(new CardLayout(0, 0));
 		GroupLayout gl_panelOhjelmistoAdmin = new GroupLayout(panelOhjelmistoAdmin);
 		gl_panelOhjelmistoAdmin.setHorizontalGroup(
 			gl_panelOhjelmistoAdmin.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelOhjelmistoAdmin.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-					.addGap(6)
-					.addGroup(gl_panelOhjelmistoAdmin.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 624, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 624, GroupLayout.PREFERRED_SIZE))
+					.addComponent(panel_V, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panelOhjelmistoAdmin.createParallelGroup(Alignment.TRAILING)
+						.addComponent(panel_O, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 624, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel_A, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 636, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_panelOhjelmistoAdmin.setVerticalGroup(
 			gl_panelOhjelmistoAdmin.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelOhjelmistoAdmin.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panelOhjelmistoAdmin.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 575, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_panelOhjelmistoAdmin.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(panel_V, GroupLayout.PREFERRED_SIZE, 575, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panelOhjelmistoAdmin.createSequentialGroup()
-							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 541, GroupLayout.PREFERRED_SIZE)
-							.addGap(6)
-							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(panel_O, GroupLayout.PREFERRED_SIZE, 541, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_A, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
+		panel_V.setLayout(new MigLayout("", "[83px][]", "[23px][23px][23px][]"));
+		
+		JButton btnNytkset = new JButton("N\u00E4yt\u00F6kset");
+		btnNytkset.setSize(new Dimension(83, 23));
+		btnNytkset.setPreferredSize(new Dimension(83, 23));
+		btnNytkset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		JButton btnElokuvat = new JButton("Elokuvat");
+		btnElokuvat.setSize(new Dimension(83, 23));
+		btnElokuvat.setPreferredSize(new Dimension(83, 23));
+		panel_V.add(btnElokuvat, "cell 0 0,alignx left,aligny top");
+		panel_V.add(btnNytkset, "cell 0 1,alignx left,aligny top");
+		
+		JButton btnKyttjt = new JButton("K\u00E4ytt\u00E4j\u00E4t");
+		btnKyttjt.setSize(new Dimension(83, 23));
+		btnKyttjt.setPreferredSize(new Dimension(83, 23));
+		btnKyttjt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel_V.add(btnKyttjt, "cell 0 2,alignx left,aligny top");
+		
+		JPanel pElokuvat = new JPanel();
+		panel_O.add(pElokuvat, "name_13190117925414");
+		
+		JPanel pNaytokset = new JPanel();
+		panel_O.add(pNaytokset, "name_13214758647317");
+		
+		JPanel pKayttajat = new JPanel();
+		panel_O.add(pKayttajat, "name_13233569861002");
 		panelOhjelmistoAdmin.setLayout(gl_panelOhjelmistoAdmin);
 
 	}
