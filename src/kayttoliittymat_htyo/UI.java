@@ -15,6 +15,7 @@ import com.jgoodies.forms.layout.*;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
@@ -28,9 +29,15 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JButton;
+import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import javax.swing.Action;
 import java.awt.CardLayout;
@@ -41,6 +48,7 @@ import javax.swing.JList;
 import javax.swing.JScrollBar;
 import javax.swing.JTabbedPane;
 import java.awt.Dimension;
+import javax.swing.BoxLayout;
 /**
  * Tehty WindowBuilderilla.
  * @author Tommi
@@ -54,6 +62,8 @@ public class UI {
 	private final Action kirjaudu = new SwingAction();
 	private JButton btnKirj;
 	protected CardLayout CL;
+	BufferedImage thehobbit;
+	JLabel hobbitkuva;
     private ActionListener AL = new ActionListener() {
         public void actionPerformed(ActionEvent AE) {
           System.out.println("Nappia painettu");
@@ -94,6 +104,7 @@ public class UI {
 		frame.setBounds(100, 100, 770, 660);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(CL = new CardLayout(0, 0));
+		lataaKuvat();
 		
 		JPanel panelAloitus = new JPanel();
 		frame.getContentPane().add(panelAloitus, "aloitusP");
@@ -182,18 +193,174 @@ public class UI {
 		
 		JPanel pOhjelmisto = new JPanel();
 		panelO.add(pOhjelmisto, "name_12842638568807");
+		pOhjelmisto.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		pOhjelmisto.add(panel, BorderLayout.NORTH);
+		
+		JLabel lblTheHobbit = new JLabel("The Hobbit");
+		lblTheHobbit.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.add(lblTheHobbit);
+		panel.add(hobbitkuva);
+		
+		JPanel panel_1 = new JPanel();
+		pOhjelmisto.add(panel_1, BorderLayout.CENTER);
+		
+		JTextPane txtpnTietoaLeffasta = new JTextPane();
+		txtpnTietoaLeffasta.setText("Tietoa leffasta");
+		panel_1.add(txtpnTietoaLeffasta);
 		
 		JPanel pTeatteri = new JPanel();
 		panelO.add(pTeatteri, "name_12992666872268");
+		pTeatteri.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_3 = new JPanel();
+		pTeatteri.add(panel_3);
+		
+		JButton btnTeatteri = new JButton("Teatteri #1");
+		panel_3.add(btnTeatteri);
+		
+		JButton btnTeatteri_1 = new JButton("Teatteri #2");
+		panel_3.add(btnTeatteri_1);
+		
+		JButton btnTeatteri_2 = new JButton("Teatteri #3");
+		panel_3.add(btnTeatteri_2);
+		
+		JButton btnTeatteri_3 = new JButton("Teatteri #4");
+		panel_3.add(btnTeatteri_3);
+		
+		JPanel panel_4 = new JPanel();
+		pTeatteri.add(panel_4, BorderLayout.NORTH);
+		
+		JLabel lblTeatterinValinta = new JLabel("Teatterin valinta");
+		panel_4.add(lblTeatterinValinta);
 		
 		JPanel pSali = new JPanel();
-		panelO.add(pSali, "name_13008255349157");
+		panelO.add(pSali, "name_12958178230757");
+		pSali.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_6 = new JPanel();
+		pSali.add(panel_6, BorderLayout.NORTH);
+		
+		JLabel lblSalinValinta = new JLabel("Salin valinta");
+		panel_6.add(lblSalinValinta);
+		
+		JPanel panel_7 = new JPanel();
+		pSali.add(panel_7, BorderLayout.CENTER);
+		panel_7.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JButton btnSali = new JButton("Sali #1");
+		panel_7.add(btnSali);
+		
+		JButton btnSali_1 = new JButton("Sali #2");
+		panel_7.add(btnSali_1);
 		
 		JPanel pPaikat = new JPanel();
-		panelO.add(pPaikat, "name_12958178230757");
+		panelO.add(pPaikat, "name_13008255349157");
+		pPaikat.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_2 = new JPanel();
+		pPaikat.add(panel_2, BorderLayout.NORTH);
+		
+		JLabel lblPaikanValinta = new JLabel("Paikan valinta");
+		panel_2.add(lblPaikanValinta);
+		
+		JPanel panel_5 = new JPanel();
+		pPaikat.add(panel_5, BorderLayout.CENTER);
+		
+		JButton button_1 = new JButton("1");
+		
+		JButton button_2 = new JButton("2");
+		button_2.setActionCommand("2");
+		
+		JButton button_3 = new JButton("3");
+		
+		JButton button_4 = new JButton("4");
+		
+		JButton button_5 = new JButton("5");
+		
+		JButton button_6 = new JButton("6");
+		
+		JButton button_7 = new JButton("7");
+		
+		JButton button_8 = new JButton("8");
+		
+		JButton button_9 = new JButton("9");
+		
+		JButton button_10 = new JButton("10");
+		
+		JButton button_11 = new JButton("12");
+		
+		JButton button_12 = new JButton("13");
+		
+		JButton button_13 = new JButton("14");
+		GroupLayout gl_panel_5 = new GroupLayout(panel_5);
+		gl_panel_5.setHorizontalGroup(
+			gl_panel_5.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_5.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(button_1)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button_3)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button_4)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button_5)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button_6)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button_7)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button_8)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button_9)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button_10)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button_11)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button_12)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button_13)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_panel_5.setVerticalGroup(
+			gl_panel_5.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_5.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_5.createParallelGroup(Alignment.BASELINE)
+						.addComponent(button_1)
+						.addComponent(button_2)
+						.addComponent(button_3)
+						.addComponent(button_4)
+						.addComponent(button_5)
+						.addComponent(button_6)
+						.addComponent(button_7)
+						.addComponent(button_8)
+						.addComponent(button_9)
+						.addComponent(button_10)
+						.addComponent(button_11)
+						.addComponent(button_12)
+						.addComponent(button_13))
+					.addContainerGap(481, Short.MAX_VALUE))
+		);
+		panel_5.setLayout(gl_panel_5);
 		
 		JPanel pVaraukset = new JPanel();
 		panelO.add(pVaraukset, "name_12916663132887");
+		pVaraukset.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_8 = new JPanel();
+		pVaraukset.add(panel_8, BorderLayout.NORTH);
+		
+		JLabel lblOmatVaraukset = new JLabel("Omat varaukset");
+		panel_8.add(lblOmatVaraukset);
+		
+		JPanel panel_9 = new JPanel();
+		pVaraukset.add(panel_9, BorderLayout.CENTER);
+		panel_9.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JPanel pVarmennus = new JPanel();
 		panelO.add(pVarmennus, "name_13057546524508");
@@ -329,5 +496,18 @@ public class UI {
 	
 	protected JPanel getPanelOhjelmisto() {
 		return panelOhjelmisto;
+	}
+	private void lataaKuvat() {
+		try {
+			thehobbit = ImageIO.read(new File("thehobbit.jpg"));
+			hobbitkuva = new JLabel(new ImageIcon(thehobbit));
+			hobbitkuva.setSize(new Dimension(60, 80));
+			hobbitkuva.setMaximumSize(new Dimension(60, 80));
+			hobbitkuva.setAlignmentX(Component.CENTER_ALIGNMENT);
+			hobbitkuva.setSize(40, 60);
+		}
+		catch (IOException x) {
+			System.out.println(x);
+		}
 	}
 }
