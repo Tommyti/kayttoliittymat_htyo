@@ -3,15 +3,10 @@ package kayttoliittymat_htyo;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
-import java.awt.GridLayout;
-import javax.swing.JToolBar;
 import javax.swing.JTextField;
-import javax.swing.DropMode;
 import java.awt.Component;
-import com.jgoodies.forms.layout.*;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -21,13 +16,8 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextPane;
 import net.miginfocom.swing.MigLayout;
-import javax.swing.JFormattedTextField;
 import java.awt.FlowLayout;
 import javax.swing.JPasswordField;
-import javax.swing.SpringLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JButton;
 import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
@@ -44,11 +34,9 @@ import java.awt.CardLayout;
 import java.awt.Color;
 
 import javax.swing.JProgressBar;
-import javax.swing.JList;
-import javax.swing.JScrollBar;
 import javax.swing.JTabbedPane;
 import java.awt.Dimension;
-import javax.swing.BoxLayout;
+
 /**
  * Tehty WindowBuilderilla.
  * @author Tommi
@@ -59,9 +47,10 @@ public class UI {
 	private JFrame frame;
 	private JTextField txtTunnus;
 	private JPasswordField pwdSalasana;
-	private final Action kirjaudu = new SwingAction();
 	private JButton btnKirj;
 	protected CardLayout CL;
+	protected CardLayout kayttajaCL;
+	protected CardLayout hallintaCL;
 	BufferedImage thehobbit;
 	JLabel hobbitkuva;
     private ActionListener AL = new ActionListener() {
@@ -70,7 +59,20 @@ public class UI {
         }
       };
     private JPanel panelOhjelmisto;
-    private JPanel panelOhjelmisto_1;
+    private final Action kirjaudu = new SwingAction();
+    private final Action luotili = new SwingAction_1();
+    private final Action ohjelmisto = new SwingAction_2();
+    private final Action varaukset = new SwingAction_3();
+    private final Action h_elokuvat = new SwingAction_4();
+    private final Action h_naytokset = new SwingAction_5();
+    private final Action h_kayttajat = new SwingAction_6();
+    private final Action sali1 = new SwingAction_7();
+    private final Action sali2 = new SwingAction_8();
+    private final Action teatteri1 = new SwingAction_9();
+    private final Action teatteri2 = new SwingAction_10();
+    private JPanel panelUser_ala;
+    private JPanel panelAdmin_ala;
+
 	/**
 	 * Launch the application.
 	 */
@@ -119,9 +121,14 @@ public class UI {
 		btnKirj = new JButton();
 		btnKirj.addActionListener(AL);
 		btnKirj.setAction(kirjaudu);
-		btnKirj.setText("Kirjaudu");
 		
 		JButton btnLuoTili = new JButton("Luo Tili");
+		btnLuoTili.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnLuoTili.setAction(luotili);
+		
 		GroupLayout gl_panelAloitus = new GroupLayout(panelAloitus);
 		gl_panelAloitus.setHorizontalGroup(
 			gl_panelAloitus.createParallelGroup(Alignment.TRAILING)
@@ -155,7 +162,7 @@ public class UI {
 		JPanel panelUser = new JPanel();
 		tabbedPane.addTab("K\u00E4ytt\u00E4j\u00E4", null, panelUser, "Sis\u00E4lt\u00E4\u00E4 kaikki k\u00E4ytt\u00E4j\u00E4lle tarkoitetut toiminnot");
 		
-		JPanel panelUser_ala = new JPanel();
+		panelUser_ala = new JPanel();
 		
 		JPanel panelV = new JPanel();
 		panelV.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -189,26 +196,49 @@ public class UI {
 							.addComponent(panelA, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
-		panelO.setLayout(new CardLayout(0, 0));
+		panelO.setLayout(kayttajaCL = new CardLayout(0, 0));
 		
 		JPanel pOhjelmisto = new JPanel();
 		panelO.add(pOhjelmisto, "name_12842638568807");
-		pOhjelmisto.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		pOhjelmisto.add(panel, BorderLayout.NORTH);
 		
-		JLabel lblTheHobbit = new JLabel("The Hobbit");
-		lblTheHobbit.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panel.add(lblTheHobbit);
-		panel.add(hobbitkuva);
+		//JLabel lblTheHobbit = new JLabel("The Hobbit");
+		//lblTheHobbit.setAlignmentX(Component.CENTER_ALIGNMENT);
+		//panel.add(lblTheHobbit);
+		//panel.add(hobbitkuva);
 		
 		JPanel panel_1 = new JPanel();
-		pOhjelmisto.add(panel_1, BorderLayout.CENTER);
 		
 		JTextPane txtpnTietoaLeffasta = new JTextPane();
 		txtpnTietoaLeffasta.setText("Tietoa leffasta");
 		panel_1.add(txtpnTietoaLeffasta);
+		GroupLayout gl_pOhjelmisto = new GroupLayout(pOhjelmisto);
+		gl_pOhjelmisto.setHorizontalGroup(
+			gl_pOhjelmisto.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pOhjelmisto.createSequentialGroup()
+					.addGroup(gl_pOhjelmisto.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_pOhjelmisto.createSequentialGroup()
+							.addGap(10)
+							.addComponent(panel, GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE))
+						.addGroup(gl_pOhjelmisto.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)))
+					.addContainerGap())
+		);
+		gl_pOhjelmisto.setVerticalGroup(
+			gl_pOhjelmisto.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pOhjelmisto.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 298, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		
+		JLabel lblnappejaLeffoistaJoissa = new JLabel("Lista nappeja leffoista");
+		panel.add(lblnappejaLeffoistaJoissa);
+		pOhjelmisto.setLayout(gl_pOhjelmisto);
 		
 		JPanel pTeatteri = new JPanel();
 		panelO.add(pTeatteri, "name_12992666872268");
@@ -218,16 +248,12 @@ public class UI {
 		pTeatteri.add(panel_3);
 		
 		JButton btnTeatteri = new JButton("Teatteri #1");
+		btnTeatteri.setAction(teatteri1);
 		panel_3.add(btnTeatteri);
 		
 		JButton btnTeatteri_1 = new JButton("Teatteri #2");
+		btnTeatteri_1.setAction(teatteri2);
 		panel_3.add(btnTeatteri_1);
-		
-		JButton btnTeatteri_2 = new JButton("Teatteri #3");
-		panel_3.add(btnTeatteri_2);
-		
-		JButton btnTeatteri_3 = new JButton("Teatteri #4");
-		panel_3.add(btnTeatteri_3);
 		
 		JPanel panel_4 = new JPanel();
 		pTeatteri.add(panel_4, BorderLayout.NORTH);
@@ -250,9 +276,11 @@ public class UI {
 		panel_7.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnSali = new JButton("Sali #1");
+		btnSali.setAction(sali1);
 		panel_7.add(btnSali);
 		
 		JButton btnSali_1 = new JButton("Sali #2");
+		btnSali_1.setAction(sali2);
 		panel_7.add(btnSali_1);
 		
 		JPanel pPaikat = new JPanel();
@@ -370,9 +398,11 @@ public class UI {
 		
 		JProgressBar progressBar = new JProgressBar();
 		panelA.add(progressBar);
-		panelV.setLayout(new MigLayout("", "[83px]", "[23px][23px][23px][23px][23px][23px][23px][23px][23px][23px][23px]"));
+		panelV.setLayout(new MigLayout("", "[90px:90.00:90px,center]", "[23px][23px][23px][23px][23px][23px][23px][23px][23px][23px][23px]"));
 		
 		JButton btnOhjelmisto = new JButton("Ohjelmisto");
+		btnOhjelmisto.setToolTipText("Elokuvat teatterissa");
+		btnOhjelmisto.setAction(ohjelmisto);
 		btnOhjelmisto.setSize(new Dimension(83, 23));
 		btnOhjelmisto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -380,15 +410,16 @@ public class UI {
 		});
 		panelV.add(btnOhjelmisto, "cell 0 0,alignx center,aligny center");
 		
-		JButton button = new JButton("Varaukset");
-		button.setSize(new Dimension(83, 23));
-		button.setPreferredSize(new Dimension(83, 23));
-		button.setActionCommand("Varaukset");
-		button.addActionListener(new ActionListener() {
+		JButton btnVaraukset = new JButton("Varaukset");
+		btnVaraukset.setAction(varaukset);
+		btnVaraukset.setSize(new Dimension(83, 23));
+		btnVaraukset.setPreferredSize(new Dimension(83, 23));
+		btnVaraukset.setActionCommand("Varaukset");
+		btnVaraukset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		panelV.add(button, "cell 0 1,alignx center,aligny center");
+		panelV.add(btnVaraukset, "cell 0 1,alignx center,aligny center");
 		panelUser_ala.setLayout(gl_panelUser_ala);
 		GroupLayout gl_panelUser = new GroupLayout(panelUser);
 		gl_panelUser.setHorizontalGroup(
@@ -404,8 +435,8 @@ public class UI {
 		JPanel panelAdmin = new JPanel();
 		tabbedPane.addTab("Hallinta", null, panelAdmin, "Sis\u00E4lt\u00E4\u00E4 kaiken hallintaan liittyv\u00E4n");
 		
-		JPanel panelAdmin_ala = new JPanel();
-		panelAdmin.setLayout(new CardLayout(0, 0));
+		panelAdmin_ala = new JPanel();
+		panelAdmin.setLayout(hallintaCL = new CardLayout(0, 0));
 		panelAdmin.add(panelAdmin_ala, "name_19274229816455");
 		
 		JPanel panel_V = new JPanel();
@@ -447,9 +478,10 @@ public class UI {
 							.addComponent(panel_A, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		panel_V.setLayout(new MigLayout("", "[83px][]", "[23px][23px][23px][]"));
+		panel_V.setLayout(new MigLayout("", "[90px:90.00px:90px,center][]", "[23px][23px][23px][]"));
 		
 		JButton btnNytkset = new JButton("N\u00E4yt\u00F6kset");
+		btnNytkset.setAction(h_naytokset);
 		btnNytkset.setSize(new Dimension(83, 23));
 		btnNytkset.setPreferredSize(new Dimension(83, 23));
 		btnNytkset.addActionListener(new ActionListener() {
@@ -458,12 +490,14 @@ public class UI {
 		});
 		
 		JButton btnElokuvat = new JButton("Elokuvat");
+		btnElokuvat.setAction(h_elokuvat);
 		btnElokuvat.setSize(new Dimension(83, 23));
 		btnElokuvat.setPreferredSize(new Dimension(83, 23));
 		panel_V.add(btnElokuvat, "cell 0 0,alignx left,aligny top");
 		panel_V.add(btnNytkset, "cell 0 1,alignx left,aligny top");
 		
 		JButton btnKyttjt = new JButton("K\u00E4ytt\u00E4j\u00E4t");
+		btnKyttjt.setAction(h_kayttajat);
 		btnKyttjt.setSize(new Dimension(83, 23));
 		btnKyttjt.setPreferredSize(new Dimension(83, 23));
 		btnKyttjt.addActionListener(new ActionListener() {
@@ -481,33 +515,135 @@ public class UI {
 		JPanel pKayttajat = new JPanel();
 		panel_O.add(pKayttajat, "name_13233569861002");
 		panelAdmin_ala.setLayout(gl_panelAdmin_ala);
+		hobbitkuva = new JLabel(new ImageIcon(thehobbit));
+		hobbitkuva.setSize(new Dimension(60, 80));
+		hobbitkuva.setMaximumSize(new Dimension(60, 80));
+		hobbitkuva.setAlignmentX(Component.CENTER_ALIGNMENT);
+		hobbitkuva.setSize(40, 60);
 
 	}
-	private class SwingAction extends AbstractAction {
-		public SwingAction() {
-			putValue(ACTION_COMMAND_KEY, "kirjautuminen");
-			putValue(NAME, "SwingAction");
-			putValue(SHORT_DESCRIPTION, "Some short description");
-		}
-		public void actionPerformed(ActionEvent e) {
-			CL.show(frame.getContentPane(), "tabbedP");
-		}
-	}
-	
 	protected JPanel getPanelOhjelmisto() {
 		return panelOhjelmisto;
 	}
-	private void lataaKuvat() {
+	private void lataaKuvat() { //antaa virheitä välillä
 		try {
 			thehobbit = ImageIO.read(new File("thehobbit.jpg"));
-			hobbitkuva = new JLabel(new ImageIcon(thehobbit));
-			hobbitkuva.setSize(new Dimension(60, 80));
-			hobbitkuva.setMaximumSize(new Dimension(60, 80));
-			hobbitkuva.setAlignmentX(Component.CENTER_ALIGNMENT);
-			hobbitkuva.setSize(40, 60);
 		}
 		catch (IOException x) {
 			System.out.println(x);
 		}
+	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(ACTION_COMMAND_KEY, "kirjautuminen");
+			putValue(NAME, "Kirjaudu");
+			putValue(SHORT_DESCRIPTION, "Kirjautuu ohjelmaan");
+			
+		}
+		public void actionPerformed(ActionEvent e) {
+
+			if(e.getActionCommand()=="kirjautuminen") {
+				//tarkista tunnus ja salasana ja vaihda paneelia
+				CL.show(frame.getContentPane(), "tabbedP");
+				//aseta hallinta piilotetuksi jos ei ylläpitäjä
+			}
+		}
+	}
+	private class SwingAction_1 extends AbstractAction {
+		public SwingAction_1() {
+			putValue(ACTION_COMMAND_KEY, "luotili");
+			putValue(NAME, "Luo Tili");
+			putValue(SHORT_DESCRIPTION, "Luo uuden tilin");
+		}
+		public void actionPerformed(ActionEvent e) {
+			if(e.getActionCommand()=="luotili") {
+				//luo tili metodi
+				//txtTunnus ja pwdSalasana
+			}
+		}
+	}
+	private class SwingAction_2 extends AbstractAction {
+		//TODO korjaa wrong parent virhe
+		public SwingAction_2() {
+			putValue(NAME, "Ohjelmisto");
+			putValue(SHORT_DESCRIPTION, "Elokuvat");
+		}
+		public void actionPerformed(ActionEvent e) {
+			kayttajaCL.show(getPanelUser_ala(), "pOhjelmisto");
+		}
+	}
+	private class SwingAction_3 extends AbstractAction {
+		public SwingAction_3() {
+			putValue(NAME, "Varaukset");
+			putValue(SHORT_DESCRIPTION, "Omat varaukset");
+		}
+		public void actionPerformed(ActionEvent e) {
+			kayttajaCL.show(getPanelUser_ala(), "pVaraukset");
+		}
+	}
+	private class SwingAction_4 extends AbstractAction {
+		public SwingAction_4() {
+			putValue(NAME, "Elokuvat");
+			putValue(SHORT_DESCRIPTION, "Elokuvien hallinta paneeli");
+		}
+		public void actionPerformed(ActionEvent e) {
+			hallintaCL.show(getPanelAdmin_ala(), "pElokuvat");
+		}
+	}
+	private class SwingAction_5 extends AbstractAction {
+		public SwingAction_5() {
+			putValue(NAME, "Näytökset");
+			putValue(SHORT_DESCRIPTION, "Näytöksien hallinta paneeli");
+		}
+		public void actionPerformed(ActionEvent e) {
+			hallintaCL.show(getPanelAdmin_ala(), "pNaytokset");
+		}
+	}
+	private class SwingAction_6 extends AbstractAction {
+		public SwingAction_6() {
+			putValue(NAME, "Käyttäjät");
+			putValue(SHORT_DESCRIPTION, "Käyttäjien hallinta paneeli");
+		}
+		public void actionPerformed(ActionEvent e) {
+			hallintaCL.show(getPanelAdmin_ala(), "pKayttajat");
+		}
+	}
+	private class SwingAction_7 extends AbstractAction {
+		public SwingAction_7() {
+			putValue(NAME, "Sali #1");
+			putValue(SHORT_DESCRIPTION, "Valitsee salin 1");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
+	}
+	private class SwingAction_8 extends AbstractAction {
+		public SwingAction_8() {
+			putValue(NAME, "Sali #2");
+			putValue(SHORT_DESCRIPTION, "Valitsee salin 2");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
+	}
+	private class SwingAction_9 extends AbstractAction {
+		public SwingAction_9() {
+			putValue(NAME, "Teatteri #1");
+			putValue(SHORT_DESCRIPTION, "Valitsee teatterin 1");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
+	}
+	private class SwingAction_10 extends AbstractAction {
+		public SwingAction_10() {
+			putValue(NAME, "Teatteri #2");
+			putValue(SHORT_DESCRIPTION, "Valitsee teatterin 2");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
+	}
+	protected JPanel getPanelUser_ala() {
+		return panelUser_ala;
+	}
+	public JPanel getPanelAdmin_ala() {
+		return panelAdmin_ala;
 	}
 }
